@@ -1,8 +1,32 @@
-function slugify(title) {
-    let slug = title.toLowerCase().split(' ');
-    return slug.join('-');
+// EXAMPLE 1
+function isEnoughCapacity(products, containerSize) {
+    let total = 0;
+    const values = Object.values(products);
+
+    for (const value of values) {
+        total += value;
+    }
+    
+    return total <= containerSize ? true : false;
+    
 };
-console.log(slugify("Arrays for begginers")); // "arrays-for-begginers"
-console.log(slugify("English for developer")); // "english-for-developer"
-console.log(slugify("Ten secrets of JavaScript")); // "ten-secrets-of-javascript"
-console.log(slugify("How to become a JUNIOR developer in TWO WEEKS")); // "how-to-become-a-junior-developer-in-two-weeks"
+
+console.log(isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8));
+console.log(isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12));
+console.log(isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14));
+console.log(isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7));
+
+// EXAMPLE 2
+function isEnoughCapacity1(products, containerSize) {
+    let sum = 0;
+    for (const key in products) {
+        sum += products[key];
+    }
+    
+    return sum <= containerSize ? true : false;
+};
+
+console.log(isEnoughCapacity1({ apples: 2, grapes: 3, carrots: 1 }, 8));
+console.log(isEnoughCapacity1({ apples: 4, grapes: 6, lime: 16 }, 12));
+console.log(isEnoughCapacity1({ apples: 1, lime: 5, tomatoes: 3 }, 14));
+console.log(isEnoughCapacity1({ apples: 18, potatoes: 5, oranges: 2 }, 7));
